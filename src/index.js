@@ -1,5 +1,6 @@
 'use strict';
 
+import maskPhone from './modules/maskPhone';
 import showPhone from './modules/showPhone';
 import showMenu from './modules/showMenu';
 import backToUp from './modules/backToUp';
@@ -9,6 +10,7 @@ import showPopupConsultation from './modules/showPopupConsultation';
 import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
 import toggleAccordion from './modules/toggleAccordion';
 
+maskPhone();
 showPhone();
 showMenu();
 backToUp();
@@ -17,3 +19,4 @@ showPopupPrivacy();
 showPopupConsultation();
 toggleSchemeListTabs();
 toggleAccordion();
+
