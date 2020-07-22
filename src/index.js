@@ -7,7 +7,7 @@ import showPopupRepairTypes from './modules/showPopupRepairTypes';
 import showPopupPrivacy from './modules/showPopupPrivacy';
 import showPopupConsultation from './modules/showPopupConsultation';
 import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
-import toogleAccordion from './modules/toogleAccordion';
+import toggleAccordion from './modules/toggleAccordion';
 
 showPhone();
 showMenu();
@@ -16,4 +16,4 @@ showPopupRepairTypes();
 showPopupPrivacy();
 showPopupConsultation();
 toggleSchemeListTabs();
-toogleAccordion();
+toggleAccordion();
