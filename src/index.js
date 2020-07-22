@@ -9,6 +9,7 @@ import showPopupPrivacy from './modules/showPopupPrivacy';
 import showPopupConsultation from './modules/showPopupConsultation';
 import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
 import toggleAccordion from './modules/toggleAccordion';
+import sendForm from './modules/sendForm';
 
 maskPhone();
 showPhone();
@@ -19,4 +20,4 @@ showPopupPrivacy();
 showPopupConsultation();
 toggleSchemeListTabs();
 toggleAccordion();
-
+sendForm();
