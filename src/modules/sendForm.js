@@ -10,6 +10,8 @@ const sendForm = () => {
 		inputs.forEach(item => {
 			if (item.classList.contains('checkbox__input')) {
 				item.removeAttribute('required');
+			} else if (item.classList.contains('feedback__input-input')) {
+				item.setAttribute('required', 'required');
 			}
 		});
 
