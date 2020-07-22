@@ -4,7 +4,7 @@ const showMenu = () => {
 	document.body.addEventListener('click', event => {
 		if (event.target.matches('.menu .menu__icon')) {
 			popupMenu.style.transform = 'translate3d(0,0,0)';
-		} else if (event.target.matches('.close-menu') || !event.target.closest('.popup-dialog-menu')) {
+		} else if (event.target.matches('.close-menu') || !event.target.closest('.popup-dialog-menu') || event.target.closest('.link-list-menu')) {
 			popupMenu.style.transform = '';
 		} else if (event.target.closest('.popup-dialog-menu')) {
 			if (event.target.closest('a[href^="#"]')) {
