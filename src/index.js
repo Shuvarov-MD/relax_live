@@ -6,7 +6,8 @@ import backToUp from './modules/backToUp';
 import showPopupRepairTypes from './modules/showPopupRepairTypes';
 import showPopupPrivacy from './modules/showPopupPrivacy';
 import showPopupConsultation from './modules/showPopupConsultation';
-import schemeListTabs from './modules/schemeListTabs';
+import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
+import toogleAccordion from './modules/toogleAccordion';
 
 showPhone();
 showMenu();
@@ -14,4 +15,5 @@ backToUp();
 showPopupRepairTypes();
 showPopupPrivacy();
 showPopupConsultation();
-schemeListTabs();
+toggleSchemeListTabs();
+toogleAccordion();

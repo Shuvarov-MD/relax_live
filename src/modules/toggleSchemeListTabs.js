@@ -1,4 +1,4 @@
-const schemeListTabs = () => {
+const toggleSchemeListTabs = () => {
 	const schemeList = document.getElementById('scheme-list'),
 		schemeNavItem = document.querySelectorAll('.scheme-nav__item'),
 		schemeSliderSlide = document.querySelectorAll('.scheme-slider__slide'),
@@ -31,4 +31,4 @@ const schemeListTabs = () => {
 	});
 };
 
-export default schemeListTabs;
+export default toggleSchemeListTabs;
