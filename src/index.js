@@ -10,6 +10,7 @@ import showPopupConsultation from './modules/showPopupConsultation';
 import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
 import toggleAccordion from './modules/toggleAccordion';
 import sendForm from './modules/sendForm';
+import showFormulaItemPopup from './modules/showFormulaItemPopup';
 
 maskPhone();
 showPhone();
@@ -21,3 +22,4 @@ showPopupConsultation();
 toggleSchemeListTabs();
 toggleAccordion();
 sendForm();
+showFormulaItemPopup();
