@@ -13,6 +13,7 @@ import sendForm from './modules/sendForm';
 import showFormulaItemPopup from './modules/showFormulaItemPopup';
 import showProblemsItemPopup from './modules/showProblemsItemPopup';
 import reviewsSlider from './modules/reviewsSlider';
+import showPopupTransparency from './modules/showPopupTransparency';
 
 maskPhone();
 showPhone();
@@ -27,3 +28,4 @@ sendForm();
 showFormulaItemPopup();
 showProblemsItemPopup();
 reviewsSlider();
+showPopupTransparency();
