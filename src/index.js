@@ -12,6 +12,7 @@ import toggleAccordion from './modules/toggleAccordion';
 import sendForm from './modules/sendForm';
 import showFormulaItemPopup from './modules/showFormulaItemPopup';
 import showProblemsItemPopup from './modules/showProblemsItemPopup';
+import reviewsSlider from './modules/reviewsSlider';
 
 maskPhone();
 showPhone();
@@ -25,3 +26,4 @@ toggleAccordion();
 sendForm();
 showFormulaItemPopup();
 showProblemsItemPopup();
+reviewsSlider();
