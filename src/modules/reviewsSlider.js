@@ -3,11 +3,15 @@ const reviewsSlider = () => {
 		reviewsSliderSlide = document.querySelectorAll('.reviews-slider__slide');
 
 	let currentSlide = 0,
-		translate = 0;
+		translate = 0,
+		clientWidth = 0;
 
 	reviewsSliderSlide.forEach(item => {
+		item.style.flex = '1 0 auto';
 		item.style.minWidth = '494px';
 	});
+
+	clientWidth = document.querySelector('.reviews-slider-wrap').clientWidth;
 
 	reviewsSliderWrap.style.display = 'flex';
 	reviewsSliderWrap.style.transition = 'all 0.3s linear';
@@ -19,11 +23,11 @@ const reviewsSlider = () => {
 
 		if (target === target.closest('#reviews-arrow_right') || target.matches('#reviews-arrow_right path') || target.matches('#reviews-arrow_right svg')) {
 			currentSlide++;
-			translate -= 494;
+			translate -= clientWidth;
 			reviewsSliderWrap.style.transform = `translateX(${translate}px)`;
 		} else if (target === target.closest('#reviews-arrow_left') || target.matches('#reviews-arrow_left path') || target.matches('#reviews-arrow_left svg')) {
 			currentSlide--;
-			translate += 494;
+			translate += clientWidth;
 			reviewsSliderWrap.style.transform = `translateX(${translate}px)`;
 		}
 

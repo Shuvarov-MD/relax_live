@@ -18,8 +18,11 @@ const showPopupTransparency = () => {
 		document.getElementById('transparency_left').style.display = 'none';
 		document.getElementById('transparency_right').style.display = '';
 
+		let clientWidth = 0;
+
 		popupTransparencySliderSlide.forEach(item => {
-			item.style.minWidth = '432px';
+			item.style.flex = '1 0 auto';
+			clientWidth = item.clientWidth;
 		});
 
 		let currentSlide = 0,
@@ -27,7 +30,7 @@ const showPopupTransparency = () => {
 		popupTransparencySliderWrap.style.transform = `translateX(${translate}px)`;
 
 		if (indexSlide !== 0) {
-			translate = -432 * indexSlide;
+			translate = -clientWidth * indexSlide;
 			currentSlide = indexSlide;
 			popupTransparencySliderWrap.style.transform = `translateX(${translate}px)`;
 			if (indexSlide === popupTransparencySliderSlide.length - 1) {
@@ -48,13 +51,13 @@ const showPopupTransparency = () => {
 				currentSlide++;
 				indexSlide++;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
-				translate -= 432;
+				translate -= clientWidth;
 				popupTransparencySliderWrap.style.transform = `translateX(${translate}px)`;
 			} else if (target === target.closest('#transparency_left') || target.matches('#transparency_left path') || target.matches('#transparency_left svg')) {
 				currentSlide--;
 				indexSlide--;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
-				translate += 432;
+				translate += clientWidth;
 				popupTransparencySliderWrap.style.transform = `translateX(${translate}px)`;
 			}
 
@@ -78,7 +81,7 @@ const showPopupTransparency = () => {
 				}
 			});
 			popupTransparency.style.visibility = 'visible';
-		} else if (event.target.closest('.close.mobile-hide') || !event.target.closest('.popup-dialog-transparency')) {
+		} else if (event.target.closest('.close.mobile-hide') || event.target.closest('.close.tablet-hide') || !event.target.closest('.popup-dialog-transparency')) {
 			popupTransparency.style.visibility = '';
 			indexSlide = 0;
 		}

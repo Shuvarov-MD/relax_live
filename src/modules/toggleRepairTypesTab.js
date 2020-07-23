@@ -3,7 +3,6 @@ const toggleRepairTypesTab = () => {
 		repairTypesNavItem = document.querySelectorAll('.repair-types-nav__item'),
 		typesRepair = document.querySelectorAll('.types-repair');
 
-
 	const slider = (item = typesRepair[0]) => {
 		const repairTypesSliderSlide = item.querySelectorAll('.repair-types-slider__slide'),
 			repairCounter = document.getElementById('repair-counter'),
@@ -15,6 +14,8 @@ const toggleRepairTypesTab = () => {
 		let currentSlide = 0,
 			translate = 0;
 
+		const clientHeight = document.querySelector('.repair-types-slider').clientHeight;
+
 		item.style.transform = `translateY(${translate}px)`;
 		document.getElementById('repair-types-arrow_left').style.display = 'none';
 		document.getElementById('repair-types-arrow_right').style.display = 'flex';
@@ -25,12 +26,12 @@ const toggleRepairTypesTab = () => {
 
 			if (target === target.closest('#repair-types-arrow_right') || target.matches('#repair-types-arrow_right path') || target.matches('#repair-types-arrow_right svg')) {
 				currentSlide++;
-				translate -= 547;
+				translate -= clientHeight;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
 				item.style.transform = `translateY(${translate}px)`;
 			} else if (target === target.closest('#repair-types-arrow_left') || target.matches('#repair-types-arrow_left path') || target.matches('#repair-types-arrow_left svg')) {
 				currentSlide--;
-				translate += 547;
+				translate += clientHeight;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
 				item.style.transform = `translateY(${translate}px)`;
 			}
@@ -73,11 +74,6 @@ const toggleRepairTypesTab = () => {
 			});
 		}
 	});
-
-
-
-
-
 };
 
 export default toggleRepairTypesTab;
