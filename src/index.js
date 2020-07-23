@@ -11,6 +11,7 @@ import toggleSchemeListTabs from './modules/toggleSchemeListTabs';
 import toggleAccordion from './modules/toggleAccordion';
 import sendForm from './modules/sendForm';
 import showFormulaItemPopup from './modules/showFormulaItemPopup';
+import showProblemsItemPopup from './modules/showProblemsItemPopup';
 
 maskPhone();
 showPhone();
@@ -23,3 +24,4 @@ toggleSchemeListTabs();
 toggleAccordion();
 sendForm();
 showFormulaItemPopup();
+showProblemsItemPopup();
