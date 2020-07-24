@@ -6,6 +6,55 @@ const showPopupTransparency = () => {
 
 	let indexSlide = 0;
 
+
+	const mobileSlider = () => {
+		const transparencySlider = document.querySelector('.transparency-slider'),
+			transparencyItem = document.querySelectorAll('.transparency-item');
+
+		let currentSlide = 0,
+			translate = 0;
+
+		const clientWidth = transparencySlider.clientWidth;
+
+		if (window.innerWidth < 1091) {
+			transparencyItem.forEach(item => {
+				item.style.minWidth = `${clientWidth}px`;
+			});
+		};
+
+
+		transparencySlider.style.display = 'flex';
+		transparencySlider.style.transition = 'all 0.3s linear';
+		document.getElementById('transparency-arrow_left').style.display = 'none';
+
+		document.querySelector('.transparency-slider-wrap').addEventListener('click', event => {
+			const target = event.target;
+
+			if (target === target.closest('#transparency-arrow_right') || target.matches('#transparency-arrow_right path') || target.matches('#transparency-arrow_right svg')) {
+				currentSlide++;
+				translate -= clientWidth;
+				transparencySlider.style.transform = `translateX(${translate}px)`;
+			} else if (target === target.closest('#transparency-arrow_left') || target.matches('#transparency-arrow_left path') || target.matches('#transparency-arrow_left svg')) {
+				currentSlide--;
+				translate += clientWidth;
+				transparencySlider.style.transform = `translateX(${translate}px)`;
+			}
+
+			if (currentSlide === 0) {
+				document.getElementById('transparency-arrow_left').style.display = 'none';
+			} else if (currentSlide === transparencyItem.length - 1) {
+				document.getElementById('transparency-arrow_right').style.display = 'none';
+			} else {
+				document.getElementById('transparency-arrow_right').style.display = '';
+				document.getElementById('transparency-arrow_left').style.display = '';
+			}
+		});
+	};
+
+
+	mobileSlider();
+
+
 	const slider = indexSlide => {
 		const transparencyPopupCounter = document.getElementById('transparency-popup-counter'),
 			sliderCounterContentCurrent = transparencyPopupCounter.querySelector('.slider-counter-content__current'),
