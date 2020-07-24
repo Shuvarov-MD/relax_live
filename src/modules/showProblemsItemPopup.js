@@ -58,14 +58,18 @@ const showProblemsItemPopup = () => {
 		document.querySelector('.problems-slider-wrap').style.overflowX = 'hidden';
 		problemsSlider.style.display = 'flex';
 
-		document.getElementById('problems-arrow_left').style.display = 'none';
-
 		document.querySelector('.problems-slider-wrap').addEventListener('click', event => {
 			const target = event.target;
 
 			if (target === target.closest('#problems-arrow_right') || target.matches('#problems-arrow_right path') || target.matches('#problems-arrow_right svg')) {
 				currentSlide++;
 				translate -= clientWidth;
+
+				if (currentSlide >= problemsSliderSlide.length) {
+					currentSlide = 0;
+					translate = 0;
+				}
+
 				problemsSlider.style.transform = `translateX(${translate}px)`;
 				problemsSliderSlide.forEach(item => {
 					if (item.classList.contains('active-item')) {
@@ -76,6 +80,13 @@ const showProblemsItemPopup = () => {
 			} else if (target === target.closest('#problems-arrow_left') || target.matches('#problems-arrow_left path') || target.matches('#problems-arrow_left svg')) {
 				currentSlide--;
 				translate += clientWidth;
+
+				if (currentSlide < 0) {
+					currentSlide = problemsSliderSlide.length - 1;
+					translate = 0;
+					translate -= clientWidth * currentSlide;
+				}
+
 				problemsSlider.style.transform = `translateX(${translate}px)`;
 				problemsSliderSlide.forEach(item => {
 					if (item.classList.contains('active-item')) {
@@ -83,15 +94,6 @@ const showProblemsItemPopup = () => {
 					}
 				});
 				problemsSliderSlide[currentSlide].classList.add('active-item');
-			}
-
-			if (currentSlide === 0) {
-				document.getElementById('problems-arrow_left').style.display = 'none';
-			} else if (currentSlide === problemsSliderSlide.length - 1) {
-				document.getElementById('problems-arrow_right').style.display = 'none';
-			} else {
-				document.getElementById('problems-arrow_right').style.display = '';
-				document.getElementById('problems-arrow_left').style.display = '';
 			}
 		});
 	};
