@@ -17,9 +17,11 @@ const showProblemsItemPopup = () => {
 				const coords = target.getBoundingClientRect(),
 					top = coords.top - problemsItemPopup[index].offsetHeight - 15;
 				if (top < 0) {
+					problemsItemPopup[index].classList.add('problems-item-popup-rotated');
 					problemsItemPopup[index].style.top = '165px';
 				} else {
 					problemsItemPopup[index].style.top = '';
+					problemsItemPopup[index].classList.remove('problems-item-popup-rotated');
 				}
 			}
 		});

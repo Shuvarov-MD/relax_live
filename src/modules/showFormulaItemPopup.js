@@ -13,9 +13,11 @@ const showFormulaItemPopup = () => {
 				const coords = target.getBoundingClientRect(),
 					top = coords.top - formulaItemPopup[index].offsetHeight - 15;
 				if (top < 0) {
+					formulaItemPopup[index].classList.add('problems-item-popup-rotated');
 					formulaItemPopup[index].style.top = '165px';
 				} else {
 					formulaItemPopup[index].style.top = '';
+					formulaItemPopup[index].classList.remove('problems-item-popup-rotated');
 				}
 			}
 		});
