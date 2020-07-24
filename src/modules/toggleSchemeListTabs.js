@@ -4,6 +4,38 @@ const toggleSchemeListTabs = () => {
 		schemeSliderSlide = document.querySelectorAll('.scheme-slider__slide'),
 		schemeDescriptionBlock = document.querySelectorAll('.scheme-description-block');
 
+	const sliderTab = () => {
+		let indexSlide = 0,
+			translate = 0;
+
+		schemeList.style.transform = `translateX(${translate}px)`;
+		document.getElementById('nav-arrow-scheme_left').style.display = 'none';
+
+		document.querySelector('.scheme .nav-wrap').addEventListener('click', event => {
+			const target = event.target;
+			if (target === target.closest('#nav-arrow-scheme_right') || target.matches('#nav-arrow-scheme_right path') || target.matches('#nav-arrow-scheme_right svg')) {
+				indexSlide++;
+				translate -= 150;
+				schemeList.style.transform = `translateX(${translate}px)`;
+			} else if (target === target.closest('#nav-arrow-scheme_left') || target.matches('#nav-arrow-scheme_left path') || target.matches('#nav-arrow-scheme_left svg')) {
+				indexSlide--;
+				translate += 150;
+				schemeList.style.transform = `translateX(${translate}px)`;
+			}
+
+			if (indexSlide === 0) {
+				document.getElementById('nav-arrow-scheme_left').style.display = 'none';
+			} else if (indexSlide === schemeNavItem.length - 1) {
+				document.getElementById('nav-arrow-scheme_right').style.display = 'none';
+			} else {
+				document.getElementById('nav-arrow-scheme_right').style.display = '';
+				document.getElementById('nav-arrow-scheme_left').style.display = '';
+			}
+		});
+	};
+
+	sliderTab();
+
 	const toggleTabContent = index => {
 		for (let i = 0; i < schemeDescriptionBlock.length; i++) {
 			if (index === i) {
