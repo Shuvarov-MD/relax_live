@@ -3,15 +3,14 @@ const reviewsSlider = () => {
 		reviewsSliderSlide = document.querySelectorAll('.reviews-slider__slide');
 
 	let currentSlide = 0,
-		translate = 0,
-		clientWidth = 0;
+		translate = 0;
+
+	const clientWidth = reviewsSliderWrap.clientWidth;
 
 	reviewsSliderSlide.forEach(item => {
 		item.style.flex = '1 0 auto';
-		item.style.minWidth = '494px';
+		item.style.minWidth = `${clientWidth}px`;
 	});
-
-	clientWidth = document.querySelector('.reviews-slider-wrap').clientWidth;
 
 	reviewsSliderWrap.style.display = 'flex';
 	reviewsSliderWrap.style.transition = 'all 0.3s linear';
