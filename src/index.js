@@ -17,6 +17,7 @@ import showPopupTransparency from './modules/showPopupTransparency';
 import toggleRepairTypesTab from './modules/toggleRepairTypesTab';
 import showPopupPortfolio from './modules/showPopupPortfolio';
 import partnersSlider from './modules/partnersSlider';
+import createContentPopupDialog from './modules/createContentPopupDialog';
 
 maskPhone();
 showPhone();
@@ -35,3 +36,4 @@ showPopupTransparency();
 toggleRepairTypesTab();
 showPopupPortfolio();
 partnersSlider();
+createContentPopupDialog();
