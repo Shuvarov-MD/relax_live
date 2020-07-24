@@ -15,6 +15,7 @@ import showProblemsItemPopup from './modules/showProblemsItemPopup';
 import reviewsSlider from './modules/reviewsSlider';
 import showPopupTransparency from './modules/showPopupTransparency';
 import toggleRepairTypesTab from './modules/toggleRepairTypesTab';
+import showPopupPortfolio from './modules/showPopupPortfolio';
 
 maskPhone();
 showPhone();
@@ -31,3 +32,4 @@ showProblemsItemPopup();
 reviewsSlider();
 showPopupTransparency();
 toggleRepairTypesTab();
+showPopupPortfolio();
