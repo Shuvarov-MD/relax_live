@@ -3,6 +3,38 @@ const toggleRepairTypesTab = () => {
 		repairTypesNavItem = document.querySelectorAll('.repair-types-nav__item'),
 		typesRepair = document.querySelectorAll('.types-repair');
 
+	const sliderTab = () => {
+		let indexSlide = 0,
+			translate = 0;
+
+		navListRepair.style.transform = `translateX(${translate}px)`;
+		document.getElementById('nav-arrow-repair-left_base').style.display = 'none';
+
+		document.querySelector('.nav-wrap-repair').addEventListener('click', event => {
+			let target = event.target;
+			if (target === target.closest('#nav-arrow-repair-right_base') || target.matches('#nav-arrow-repair-right_base path') || target.matches('#nav-arrow-repair-right_base svg')) {
+				indexSlide++;
+				translate -= 150;
+				navListRepair.style.transform = `translateX(${translate}px)`;
+			} else if (target === target.closest('#nav-arrow-repair-left_base') || target.matches('#nav-arrow-repair-left_base path') || target.matches('#nav-arrow-repair-left_base svg')) {
+				indexSlide--;
+				translate += 150;
+				navListRepair.style.transform = `translateX(${translate}px)`;
+			}
+
+			if (indexSlide === 0) {
+				document.getElementById('nav-arrow-repair-left_base').style.display = 'none';
+			} else if (indexSlide === repairTypesNavItem.length) {
+				document.getElementById('nav-arrow-repair-right_base').style.display = 'none';
+			} else {
+				document.getElementById('nav-arrow-repair-right_base').style.display = '';
+				document.getElementById('nav-arrow-repair-left_base').style.display = '';
+			}
+		});
+
+	};
+
+
 	const slider = (item = typesRepair[0]) => {
 		const repairTypesSliderSlide = item.querySelectorAll('.repair-types-slider__slide'),
 			repairCounter = document.getElementById('repair-counter'),
@@ -56,6 +88,7 @@ const toggleRepairTypesTab = () => {
 	});
 
 	slider();
+	sliderTab();
 
 	navListRepair.addEventListener('click', event => {
 		let target = event.target;
