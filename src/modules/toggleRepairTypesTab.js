@@ -31,7 +31,6 @@ const toggleRepairTypesTab = () => {
 				document.getElementById('nav-arrow-repair-left_base').style.display = '';
 			}
 		});
-
 	};
 
 
@@ -70,11 +69,12 @@ const toggleRepairTypesTab = () => {
 
 			if (currentSlide === 0) {
 				document.getElementById('repair-types-arrow_left').style.display = 'none';
+				document.getElementById('repair-types-arrow_right').style.display = 'flex';
 			} else if (currentSlide === repairTypesSliderSlide.length - 1) {
 				document.getElementById('repair-types-arrow_right').style.display = 'none';
 			} else {
-				document.getElementById('repair-types-arrow_right').style.display = '';
-				document.getElementById('repair-types-arrow_left').style.display = '';
+				document.getElementById('repair-types-arrow_right').style.display = 'flex';
+				document.getElementById('repair-types-arrow_left').style.display = 'flex';
 			}
 		});
 	};
