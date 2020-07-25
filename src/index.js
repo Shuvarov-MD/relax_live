@@ -35,7 +35,7 @@ showProblemsItemPopup();
 reviewsSlider();
 showPopupTransparency();
 toggleRepairTypesTab();
-//showPopupPortfolio();
+showPopupPortfolio();
 partnersSlider();
 createContentPopupDialog();
 portfolioSlider();
