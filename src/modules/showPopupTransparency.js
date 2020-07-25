@@ -2,30 +2,27 @@ const showPopupTransparency = () => {
 	const popupTransparency = document.querySelector('.popup-transparency'),
 		popupTransparencySliderWrap = document.querySelector('.popup-transparency-slider-wrap__slide'),
 		transparencyItemImg = document.querySelectorAll('.transparency-item__img'),
-		popupTransparencySliderSlide = document.querySelectorAll('.popup-transparency-slider__slide');
+		popupTransparencySliderSlide = document.querySelectorAll('.popup-transparency-slider__slide'),
+		transparencySlider = document.querySelector('.transparency-slider'),
+		transparencyItem = document.querySelectorAll('.transparency-item');
 
 	let indexSlide = 0;
 
-
 	const mobileSlider = () => {
-		const transparencySlider = document.querySelector('.transparency-slider'),
-			transparencyItem = document.querySelectorAll('.transparency-item');
-
 		let currentSlide = 0,
 			translate = 0;
 
 		const clientWidth = transparencySlider.clientWidth;
 
-		if (window.innerWidth < 1091) {
-			transparencyItem.forEach(item => {
-				item.style.minWidth = `${clientWidth}px`;
-			});
-		};
-
+		transparencyItem.forEach(item => {
+			item.style.minWidth = `${clientWidth}px`;
+		});
 
 		transparencySlider.style.display = 'flex';
 		transparencySlider.style.transition = 'all 0.3s linear';
 		document.getElementById('transparency-arrow_left').style.display = 'none';
+		transparencySlider.style.transform = `translateX(${translate}px)`;
+		document.getElementById('transparency-arrow_right').style.display = 'flex';
 
 		document.querySelector('.transparency-slider-wrap').addEventListener('click', event => {
 			const target = event.target;
@@ -33,27 +30,41 @@ const showPopupTransparency = () => {
 			if (target === target.closest('#transparency-arrow_right') || target.matches('#transparency-arrow_right path') || target.matches('#transparency-arrow_right svg')) {
 				currentSlide++;
 				translate -= clientWidth;
+				console.log(currentSlide);
 				transparencySlider.style.transform = `translateX(${translate}px)`;
 			} else if (target === target.closest('#transparency-arrow_left') || target.matches('#transparency-arrow_left path') || target.matches('#transparency-arrow_left svg')) {
 				currentSlide--;
+				console.log(currentSlide);
 				translate += clientWidth;
 				transparencySlider.style.transform = `translateX(${translate}px)`;
 			}
 
 			if (currentSlide === 0) {
 				document.getElementById('transparency-arrow_left').style.display = 'none';
+				document.getElementById('transparency-arrow_right').style.display = 'flex';
 			} else if (currentSlide === transparencyItem.length - 1) {
 				document.getElementById('transparency-arrow_right').style.display = 'none';
+				document.getElementById('transparency-arrow_left').style.display = 'flex';
 			} else {
-				document.getElementById('transparency-arrow_right').style.display = '';
-				document.getElementById('transparency-arrow_left').style.display = '';
+				document.getElementById('transparency-arrow_right').style.display = 'flex';
+				document.getElementById('transparency-arrow_left').style.display = 'flex';
 			}
 		});
 	};
 
-
-	mobileSlider();
-
+	window.addEventListener('resize', () => {
+		if (window.innerWidth < 1091) {
+			mobileSlider();
+		} else {
+			const translate = 0;
+			document.getElementById('transparency-arrow_left').style.display = 'none';
+			transparencySlider.style.transform = `translateX(${translate}px)`;
+			document.getElementById('transparency-arrow_right').style.display = 'none';
+			transparencyItem.forEach(item => {
+				item.style.minWidth = '';
+			});
+		}
+	});
 
 	const slider = indexSlide => {
 		const transparencyPopupCounter = document.getElementById('transparency-popup-counter'),
@@ -112,6 +123,7 @@ const showPopupTransparency = () => {
 
 			if (currentSlide === 0) {
 				document.getElementById('transparency_left').style.display = 'none';
+
 			} else if (currentSlide === popupTransparencySliderSlide.length - 1) {
 				document.getElementById('transparency_right').style.display = 'none';
 			} else {
