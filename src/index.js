@@ -19,6 +19,7 @@ import showPopupPortfolio from './modules/showPopupPortfolio';
 import partnersSlider from './modules/partnersSlider';
 import createContentPopupDialog from './modules/createContentPopupDialog';
 import portfolioSlider from './modules/portfolioSlider';
+import designsTabSlider from './modules/designsTabSlider';
 
 maskPhone();
 showPhone();
@@ -39,3 +40,4 @@ showPopupPortfolio();
 partnersSlider();
 createContentPopupDialog();
 portfolioSlider();
+designsTabSlider();
