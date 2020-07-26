@@ -1,20 +1,15 @@
 const showPopupDesign = () => {
-
-
-	const //designs = document.getElementById('designs'),
-		popupDesign = document.querySelector('.popup-design'),
+	const popupDesign = document.querySelector('.popup-design'),
 		popupDesignText = document.querySelectorAll('.popup-design-text'),
 		navListPopupDesigns = document.getElementById('nav-list-popup-designs'),
 		designsNavItem = document.querySelectorAll('#nav-list-popup-designs .designs-nav__item'),
 		popupPortfolioSliderSlide = document.querySelectorAll('.popup-designs-slider__style');
-
 
 	popupPortfolioSliderSlide.forEach(item => {
 		item.style.display = 'flex';
 	});
 
 	const indexSlide = 0;
-
 
 	const toggleTabContent = index => {
 		for (let i = 0; i < designsNavItem.length; i++) {
@@ -54,9 +49,6 @@ const showPopupDesign = () => {
 			item.style.overflow = 'hidden';
 		});
 
-
-
-
 		let currentSlide = 0,
 			translate = 0;
 		popupDesignSliderWrapStyleSlide.style.display = 'flex';
@@ -94,10 +86,7 @@ const showPopupDesign = () => {
 		});
 	};
 
-
 	slider(indexSlide);
-
-
 
 	navListPopupDesigns.addEventListener('click', event => {
 		let target = event.target;
@@ -111,7 +100,6 @@ const showPopupDesign = () => {
 			});
 		}
 	});
-
 
 	document.body.addEventListener('click', event => {
 		console.log(event.target);
@@ -127,8 +115,6 @@ const showPopupDesign = () => {
 			popupDesign.style.visibility = '';
 		}
 	});
-
-
 };
 
 export default showPopupDesign;

@@ -4,9 +4,6 @@ const designsTabSlider = () => {
 		designsSliderSlide = document.querySelectorAll('.designs-slider__style'),
 		previewBlock = document.querySelectorAll('.preview-block');
 
-	console.log(designsNavItem);
-
-
 	const sliderTab = () => {
 		let indexSlide = 0,
 			translate = 0;
@@ -28,18 +25,29 @@ const designsTabSlider = () => {
 
 			if (indexSlide === 0) {
 				document.getElementById('nav-arrow-designs_left').style.display = 'none';
-				document.getElementById('nav-arrow-designs_right').style.display = 'flex';
+				document.getElementById('nav-arrow-designs_right').style.display = '';
 			} else if (indexSlide === designsNavItem.length - 1) {
 				document.getElementById('nav-arrow-designs_right').style.display = 'none';
-				document.getElementById('nav-arrow-designs_left').style.display = 'flex';
+				document.getElementById('nav-arrow-designs_left').style.display = '';
 			} else {
-				document.getElementById('nav-arrow-designs_right').style.display = 'flex';
-				document.getElementById('nav-arrow-designs_left').style.display = 'flex';
+				document.getElementById('nav-arrow-designs_right').style.display = '';
+				document.getElementById('nav-arrow-designs_left').style.display = '';
 			}
 		});
 	};
 
-	sliderTab();
+	if (window.innerWidth < 1135) {
+		sliderTab();
+	}
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth < 1135) {
+			sliderTab();
+		}
+		if (window.innerWidth <= 1024) {
+			slider(0);
+		}
+	});
 
 	const toggleTabContent = index => {
 		for (let i = 0; i < previewBlock.length; i++) {
@@ -55,6 +63,56 @@ const designsTabSlider = () => {
 		}
 	};
 
+
+	const slider = indexSlide => {
+		const designsCounter = document.getElementById('designs-counter'),
+			sliderCounterContentCurrent = designsCounter.querySelector('.slider-counter-content__current'),
+			sliderCounterContentTotal = designsCounter.querySelector('.slider-counter-content__total');
+
+		sliderCounterContentTotal.textContent = `${designsSliderSlide[indexSlide].querySelectorAll('.designs-slider__style-slide').length}`;
+
+		document.getElementById('design_left').style.display = 'none';
+		document.getElementById('design_right').style.display = '';
+
+		let currentSlide = 0;
+
+		sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
+		const designsSliderStyleSlide = designsSliderSlide[indexSlide].querySelectorAll('.designs-slider__style-slide');
+		designsSliderStyleSlide[0].style.display = 'block';
+
+
+		document.querySelector('.designs-slider-wrap').addEventListener('click', event => {
+			const target = event.target;
+
+			if (target === target.closest('#design_right') || target.matches('#design_right path') || target.matches('#design_right svg')) {
+				designsSliderStyleSlide[currentSlide].style.display = 'none';
+				currentSlide++;
+				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
+				designsSliderStyleSlide[currentSlide].style.display = 'block';
+			}	else if (target === target.closest('#design_left') || target.matches('#design_left path') || target.matches('#design_left svg')) {
+				designsSliderStyleSlide[currentSlide].style.display = 'none';
+				currentSlide--;
+				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
+				designsSliderStyleSlide[currentSlide].style.display = 'block';
+			}
+
+			if (currentSlide === 0) {
+				document.getElementById('design_left').style.display = 'none';
+				document.getElementById('design_right').style.display = '';
+
+			} else if (currentSlide === designsSliderStyleSlide.length - 1) {
+				document.getElementById('design_right').style.display = 'none';
+				document.getElementById('design_left').style.display = '';
+			} else {
+				document.getElementById('design_right').style.display = '';
+				document.getElementById('design_left').style.display = '';
+			}
+
+		});
+
+
+	};
+
 	const indexSlide = 0;
 
 	designsList.addEventListener('click', event => {
@@ -64,7 +122,7 @@ const designsTabSlider = () => {
 			designsNavItem.forEach((item, index) => {
 				if (item === target) {
 					toggleTabContent(index);
-
+					slider(index);
 					previewBlock[index].addEventListener('click', event => {
 						let target = event.target;
 						target = target.closest('.preview-block__item');
@@ -107,6 +165,25 @@ const designsTabSlider = () => {
 			});
 		}
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 export default designsTabSlider;
