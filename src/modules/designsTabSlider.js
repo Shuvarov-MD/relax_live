@@ -2,7 +2,10 @@ const designsTabSlider = () => {
 	const designsList = document.getElementById('designs-list'),
 		designsNavItem = document.querySelectorAll('#designs-list .designs-nav__item'),
 		designsSliderSlide = document.querySelectorAll('.designs-slider__style'),
-		previewBlock = document.querySelectorAll('.preview-block');
+		previewBlock = document.querySelectorAll('.preview-block'),
+		designsCounter = document.getElementById('designs-counter'),
+		sliderCounterContentCurrent = designsCounter.querySelector('.slider-counter-content__current'),
+		sliderCounterContentTotal = designsCounter.querySelector('.slider-counter-content__total');
 
 	const sliderTab = () => {
 		let indexSlide = 0,
@@ -36,18 +39,6 @@ const designsTabSlider = () => {
 		});
 	};
 
-	if (window.innerWidth < 1135) {
-		sliderTab();
-	}
-
-	window.addEventListener('resize', () => {
-		if (window.innerWidth < 1135) {
-			sliderTab();
-		}
-		if (window.innerWidth <= 1024) {
-			slider(0);
-		}
-	});
 
 	const toggleTabContent = index => {
 		for (let i = 0; i < previewBlock.length; i++) {
@@ -63,37 +54,50 @@ const designsTabSlider = () => {
 		}
 	};
 
-
-	const slider = indexSlide => {
-		const designsCounter = document.getElementById('designs-counter'),
-			sliderCounterContentCurrent = designsCounter.querySelector('.slider-counter-content__current'),
-			sliderCounterContentTotal = designsCounter.querySelector('.slider-counter-content__total');
-
-		sliderCounterContentTotal.textContent = `${designsSliderSlide[indexSlide].querySelectorAll('.designs-slider__style-slide').length}`;
-
+	const slider = (indexSlides = 0) => {
+		sliderCounterContentTotal.textContent = `${designsSliderSlide[indexSlides].querySelectorAll('.designs-slider__style-slide').length}`;
 		document.getElementById('design_left').style.display = 'none';
 		document.getElementById('design_right').style.display = '';
 
 		let currentSlide = 0;
 
 		sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
-		const designsSliderStyleSlide = designsSliderSlide[indexSlide].querySelectorAll('.designs-slider__style-slide');
-		designsSliderStyleSlide[0].style.display = 'block';
 
+		designsSliderSlide.forEach(item => {
+			item.querySelectorAll('.designs-slider__style-slide').forEach((item, index) => {
+				if (index === 0) {
+					item.style.display = 'block';
+				} else {
+					item.style.display = 'none';
+				}
+			});
+		});
+
+		const designsSliderStyleSlide = designsSliderSlide[indexSlides].querySelectorAll('.designs-slider__style-slide');
 
 		document.querySelector('.designs-slider-wrap').addEventListener('click', event => {
 			const target = event.target;
 
 			if (target === target.closest('#design_right') || target.matches('#design_right path') || target.matches('#design_right svg')) {
-				designsSliderStyleSlide[currentSlide].style.display = 'none';
 				currentSlide++;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
-				designsSliderStyleSlide[currentSlide].style.display = 'block';
+				designsSliderStyleSlide.forEach((item, index) => {
+					if (index === currentSlide) {
+						item.style.display = 'block';
+					} else {
+						item.style.display = 'none';
+					}
+				});
 			}	else if (target === target.closest('#design_left') || target.matches('#design_left path') || target.matches('#design_left svg')) {
-				designsSliderStyleSlide[currentSlide].style.display = 'none';
 				currentSlide--;
 				sliderCounterContentCurrent.textContent = `${currentSlide + 1}`;
-				designsSliderStyleSlide[currentSlide].style.display = 'block';
+				designsSliderStyleSlide.forEach((item, index) => {
+					if (index === currentSlide) {
+						item.style.display = 'block';
+					} else {
+						item.style.display = 'none';
+					}
+				});
 			}
 
 			if (currentSlide === 0) {
@@ -107,10 +111,7 @@ const designsTabSlider = () => {
 				document.getElementById('design_right').style.display = '';
 				document.getElementById('design_left').style.display = '';
 			}
-
 		});
-
-
 	};
 
 	const indexSlide = 0;
@@ -123,6 +124,7 @@ const designsTabSlider = () => {
 				if (item === target) {
 					toggleTabContent(index);
 					slider(index);
+
 					previewBlock[index].addEventListener('click', event => {
 						let target = event.target;
 						target = target.closest('.preview-block__item');
@@ -146,7 +148,6 @@ const designsTabSlider = () => {
 		}
 	});
 
-
 	previewBlock[indexSlide].addEventListener('click', event => {
 		let target = event.target;
 		target = target.closest('.preview-block__item');
@@ -166,24 +167,20 @@ const designsTabSlider = () => {
 		}
 	});
 
+	slider();
 
+	if (window.innerWidth < 1135) {
+		sliderTab();
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	window.addEventListener('resize', () => {
+		if (window.innerWidth < 1135) {
+			sliderTab();
+		}
+		if (window.innerWidth <= 1024) {
+			slider();
+		}
+	});
 };
 
 export default designsTabSlider;
