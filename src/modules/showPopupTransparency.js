@@ -30,11 +30,9 @@ const showPopupTransparency = () => {
 			if (target === target.closest('#transparency-arrow_right') || target.matches('#transparency-arrow_right path') || target.matches('#transparency-arrow_right svg')) {
 				currentSlide++;
 				translate -= clientWidth;
-				console.log(currentSlide);
 				transparencySlider.style.transform = `translateX(${translate}px)`;
 			} else if (target === target.closest('#transparency-arrow_left') || target.matches('#transparency-arrow_left path') || target.matches('#transparency-arrow_left svg')) {
 				currentSlide--;
-				console.log(currentSlide);
 				translate += clientWidth;
 				transparencySlider.style.transform = `translateX(${translate}px)`;
 			}

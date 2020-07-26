@@ -98,7 +98,6 @@ const toggleRepairTypesTab = () => {
 				if (item === target) {
 					repairTypesNavItem[index].classList.add('active');
 					typesRepair[index].style.display = 'block';
-					console.log(typesRepair[index]);
 					slider(typesRepair[index]);
 				} else {
 					repairTypesNavItem[index].classList.remove('active');

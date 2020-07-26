@@ -102,7 +102,6 @@ const showPopupDesign = () => {
 	});
 
 	document.body.addEventListener('click', event => {
-		console.log(event.target);
 		if (event.target.closest('.link-list-designs a')) {
 			popupDesign.style.visibility = 'visible';
 		} else if (event.target.closest('.close.mobile-hide') || event.target.closest('.close.tablet-hide') || !event.target.closest('.popup-dialog-design')) {

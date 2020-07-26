@@ -100,6 +100,12 @@ const showProblemsItemPopup = () => {
 
 	slider();
 
+	window.addEventListener('resize', () => {
+		if (window.innerWidth <= 1024) {
+			slider();
+		}
+	});
+
 };
 
 export default showProblemsItemPopup;
