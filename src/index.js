@@ -20,6 +20,7 @@ import partnersSlider from './modules/partnersSlider';
 import createContentPopupDialog from './modules/createContentPopupDialog';
 import portfolioSlider from './modules/portfolioSlider';
 import designsTabSlider from './modules/designsTabSlider';
+import showPopupDesign from './modules/showPopupDesign';
 
 maskPhone();
 showPhone();
@@ -41,3 +42,4 @@ partnersSlider();
 createContentPopupDialog();
 portfolioSlider();
 designsTabSlider();
+showPopupDesign();
