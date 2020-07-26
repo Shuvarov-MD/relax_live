@@ -52,16 +52,27 @@ const showFormulaItemPopup = () => {
 
 		if (window.innerWidth <= 1024 && window.innerWidth > 575) {
 			clientWidth = formulaSlider.clientWidth / 3;
-			formulaSlider.appendChild(formulaSliderSlideLast);
-			formulaSlider.insertBefore(formulaSliderSlideFirst, formulaSlider.firstChild);
+
+			if (formulaSlider.contains(formulaSliderSlideLast) && formulaSlider.contains(formulaSliderSlideFirst)) {
+				formulaSlider.removeChild(formulaSliderSlideLast);
+				formulaSlider.removeChild(formulaSliderSlideFirst);
+			}
+
+			if (!formulaSlider.contains(formulaSliderSlideLast) && !formulaSlider.contains(formulaSliderSlideFirst)) {
+				formulaSlider.appendChild(formulaSliderSlideLast);
+				formulaSlider.insertBefore(formulaSliderSlideFirst, formulaSlider.firstChild);
+			}
+
 			formulaSliderSlide[currentSlide].classList.add('active-item');
 		} else if (window.innerWidth <= 575) {
 			clientWidth = formulaSlider.clientWidth;
 			formulaSliderSlide[currentSlide].classList.add('active-item');
-			formulaSlider.removeChild(formulaSliderSlideLast);
-			formulaSlider.removeChild(formulaSliderSlideFirst);
-		}
 
+			if (formulaSlider.contains(formulaSliderSlideLast) && formulaSlider.contains(formulaSliderSlideFirst)) {
+				formulaSlider.removeChild(formulaSliderSlideLast);
+				formulaSlider.removeChild(formulaSliderSlideFirst);
+			}
+		}
 
 		formulaSliderSlide.forEach(item => {
 			item.style.minWidth = `${clientWidth}px`;
@@ -114,6 +125,8 @@ const showFormulaItemPopup = () => {
 			}
 		});
 	};
+
+
 
 	slider();
 

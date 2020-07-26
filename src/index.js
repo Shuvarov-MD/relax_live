@@ -1,5 +1,13 @@
 'use strict';
 
+import "@babel/polyfill";
+import 'nodelist-foreach-polyfill';
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'whatwg-fetch';
+import 'polyfill-object.fromentries';
+
+
 import maskPhone from './modules/maskPhone';
 import showPhone from './modules/showPhone';
 import showMenu from './modules/showMenu';

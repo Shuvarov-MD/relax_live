@@ -49,6 +49,7 @@ const sendForm = () => {
 						button.textContent = 'Перезвоните мне';
 					}, 2000);
 				});
+
 				item.querySelector('.checkbox__label').style.borderColor = '';
 				item.querySelector('.checkbox__input').checked = false;
 
