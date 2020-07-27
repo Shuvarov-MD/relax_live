@@ -4,7 +4,7 @@ const showPopupPrivacy = () => {
 	document.body.addEventListener('click', event => {
 		if (event.target.matches('.link-privacy')) {
 			popupPrivacy.style.visibility = 'visible';
-		} else if (event.target.closest('.close.mobile-hide') || !event.target.closest('.popup-dialog-privacy')) {
+		} else if (event.target.closest('.close.mobile-hide') || event.target.closest('.close.tablet-hide.desktop-hide') || !event.target.closest('.popup-dialog-privacy')) {
 			popupPrivacy.style.visibility = '';
 		}
 	});
