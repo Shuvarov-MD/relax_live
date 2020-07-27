@@ -25,7 +25,7 @@ const sendForm = () => {
 
 		item.addEventListener('submit', event => {
 			event.preventDefault();
-			if (item.querySelector('.checkbox__input').checked) {
+			if (item.querySelector('.checkbox__input').checked && item.querySelector('input[name="phone"]').value.length === 18) {
 				button.textContent = '';
 				button.appendChild(statusMessage);
 				statusMessage.classList.add('sk-rotating-plane');

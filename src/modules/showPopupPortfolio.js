@@ -9,7 +9,9 @@ const showPopupPortfolio = () => {
 
 	document.querySelector('.popup-portfolio-slider-wrap__slide').style.overflow = 'hidden';
 
-	const slider = indexSlide => {
+
+
+	const slider = (indexSlide = 0) => {
 		const popupPortfolioCounter = document.getElementById('popup-portfolio-counter'),
 			sliderCounterContentCurrent = popupPortfolioCounter.querySelector('.slider-counter-content__current'),
 			sliderCounterContentTotal = popupPortfolioCounter.querySelector('.slider-counter-content__total');
@@ -88,14 +90,14 @@ const showPopupPortfolio = () => {
 
 			if (currentSlide === 0) {
 				document.getElementById('popup_portfolio_left').style.display = 'none';
-				document.getElementById('popup_portfolio_right').style.display = 'flex';
+				document.getElementById('popup_portfolio_right').style.display = '';
 
 			} else if (currentSlide === popupPortfolioSliderSlide.length - 1) {
 				document.getElementById('popup_portfolio_right').style.display = 'none';
-				document.getElementById('popup_portfolio_left').style.display = 'flex';
+				document.getElementById('popup_portfolio_left').style.display = '';
 			} else {
-				document.getElementById('popup_portfolio_right').style.display = 'flex';
-				document.getElementById('popup_portfolio_left').style.display = 'flex';
+				document.getElementById('popup_portfolio_right').style.display = '';
+				document.getElementById('popup_portfolio_left').style.display = '';
 			}
 		});
 	};
@@ -119,6 +121,12 @@ const showPopupPortfolio = () => {
 			popupPortfolio.style.visibility = '';
 		}
 	});
+
+	window.addEventListener('resize', () => {
+		slider();
+	});
+
+	slider();
 
 };
 

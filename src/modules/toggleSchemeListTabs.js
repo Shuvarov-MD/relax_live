@@ -25,14 +25,17 @@ const toggleSchemeListTabs = () => {
 
 			if (indexSlide === 0) {
 				document.getElementById('nav-arrow-scheme_left').style.display = 'none';
+				document.getElementById('nav-arrow-scheme_right').style.display = '';
 			} else if (indexSlide === schemeNavItem.length - 1) {
 				document.getElementById('nav-arrow-scheme_right').style.display = 'none';
+				document.getElementById('nav-arrow-scheme_left').style.display = '';
 			} else {
 				document.getElementById('nav-arrow-scheme_right').style.display = '';
 				document.getElementById('nav-arrow-scheme_left').style.display = '';
 			}
 		});
 	};
+
 
 	sliderTab();
 
@@ -59,6 +62,12 @@ const toggleSchemeListTabs = () => {
 					toggleTabContent(index);
 				}
 			});
+		}
+	});
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth <= 1135) {
+			sliderTab();
 		}
 	});
 };

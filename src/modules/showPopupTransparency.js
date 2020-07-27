@@ -39,16 +39,18 @@ const showPopupTransparency = () => {
 
 			if (currentSlide === 0) {
 				document.getElementById('transparency-arrow_left').style.display = 'none';
-				document.getElementById('transparency-arrow_right').style.display = 'flex';
+				document.getElementById('transparency-arrow_right').style.display = '';
 			} else if (currentSlide === transparencyItem.length - 1) {
 				document.getElementById('transparency-arrow_right').style.display = 'none';
-				document.getElementById('transparency-arrow_left').style.display = 'flex';
+				document.getElementById('transparency-arrow_left').style.display = '';
 			} else {
-				document.getElementById('transparency-arrow_right').style.display = 'flex';
-				document.getElementById('transparency-arrow_left').style.display = 'flex';
+				document.getElementById('transparency-arrow_right').style.display = '';
+				document.getElementById('transparency-arrow_left').style.display = '';
 			}
 		});
 	};
+
+	mobileSlider();
 
 	window.addEventListener('resize', () => {
 		if (window.innerWidth < 1091) {
@@ -121,9 +123,10 @@ const showPopupTransparency = () => {
 
 			if (currentSlide === 0) {
 				document.getElementById('transparency_left').style.display = 'none';
-
+				document.getElementById('transparency_right').style.display = '';
 			} else if (currentSlide === popupTransparencySliderSlide.length - 1) {
 				document.getElementById('transparency_right').style.display = 'none';
+				document.getElementById('transparency_left').style.display = '';
 			} else {
 				document.getElementById('transparency_right').style.display = '';
 				document.getElementById('transparency_left').style.display = '';
