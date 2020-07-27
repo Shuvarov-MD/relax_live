@@ -31,7 +31,10 @@ const sendForm = () => {
 				statusMessage.classList.add('sk-rotating-plane');
 
 				let formData = new FormData(item);
-				formData = Object.fromEntries(formData);
+
+				formData = JSON.stringify(Array.from(formData).reduce((o, [k, v]) => (o[k] = v, o), {}));
+
+				//formData = Object.fromEntries(formData);
 
 				postData(formData).then(response => {
 					if (response.status !== 200) {
